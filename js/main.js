@@ -201,17 +201,10 @@ function sort(e) {
             : priorityA < priorityB;
     });
 
-    const checkbox = {
-        'false': 0,
-        'true': 1,
-    }
-
-    sortByCheckbox = ((taskA, taskB) => {
-        const checkboxA = checkbox[String(taskA.isDone)];
-        const checkboxB = checkbox[String(taskB.isDone)];
+    sortByCheckbox = (task => {
         return sortDirection === 'asc'
-            ? checkboxA > checkboxB
-            : checkboxA < checkboxB;
+            ? task.isDone
+            : !task.isDone
     });
 
     if (buttonId === 'description-sort') {
